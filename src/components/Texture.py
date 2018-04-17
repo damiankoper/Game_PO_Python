@@ -32,8 +32,8 @@ class Texture:
         self.mTexture = SDL_CreateTextureFromSurface(
             self.gRenderer, textSurface)
 
-        self.mWidth = textSurface.w
-        self.mHeight = textSurface.h
+        self.mWidth = textSurface.contents.w
+        self.mHeight = textSurface.contents.h
 
         SDL_FreeSurface(textSurface)
 
