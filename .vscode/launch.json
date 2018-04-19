@@ -14,7 +14,7 @@
             "name": "Python: Game",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceFolder}/game.py"
+            "program": "${workspaceFolder}/main.py"
         },
         {
             "name": "Python: Attach",

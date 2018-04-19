@@ -12,7 +12,7 @@ class Texture:
     def loadFromRenderedText(self, textureText, textColor, gFont):
         self.free()
         textSurface = TTF_RenderText_Solid(
-            gFont, textureText, textColor)
+            gFont, textureText.encode('utf-8'), textColor)
 
         self.mTexture = SDL_CreateTextureFromSurface(
             self.gRenderer, textSurface)
@@ -27,7 +27,7 @@ class Texture:
     def loadFromRenderedTextShaded(self, textureText, textColor, gFont, bgColor):
         self.free()
         textSurface = TTF_RenderText_Shaded(
-            gFont, textureText, textColor, bgColor)
+            gFont, textureText.encode('utf-8'), textColor, bgColor)
 
         self.mTexture = SDL_CreateTextureFromSurface(
             self.gRenderer, textSurface)
@@ -56,7 +56,7 @@ class Texture:
         SDL_SetTextureAlphaMod(self.mTexture, a)
 
     def render(self, x, y, clip=None, angle=0.0, center=None, flip=SDL_FLIP_NONE):
-        renderQuad = SDL_Rect(x, y, self.mWidth, self.mHeight)
+        renderQuad = SDL_Rect(int(x), int(y), self.mWidth, self.mHeight)
 
         if clip is not None:
             renderQuad.w = clip.w

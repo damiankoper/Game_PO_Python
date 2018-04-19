@@ -28,6 +28,7 @@ class ViewEngine(metaclass=Singleton):
 
     def changeView(self, name):
         self.interface = self.interfaces[name]
+        self.interface.init()
 
     def setOverlay(self, name):
         self.overlay = self.interfaces[name]

@@ -40,13 +40,13 @@ class Button:
             SDL_GetMouseState(x, y)
             x, y = x.value, y.value
             inside = True
-            if x < self.mPosition.x-self.borderX:
+            if x < (self.mPosition.x - self.borderX):
                 inside = False
-            elif x > self.mPosition.x+self.gTexture.getWidth()+self.borderX:
+            elif x > (self.mPosition.x + self.gTexture.getWidth()+self.borderX):
                 inside = False
-            elif y < self.mPosition.y - self.borderY:
-                inside - False
-            elif y > self.mPosition.y+self.gTexture.getHeight()+self.borderY:
+            elif y < (self.mPosition.y - self.borderY):
+                inside = False
+            elif y > (self.mPosition.y + self.gTexture.getHeight()+self.borderY):
                 inside = False
             if inside:
                 if e.type == SDL_MOUSEBUTTONDOWN:

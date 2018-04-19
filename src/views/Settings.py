@@ -9,9 +9,9 @@ from sdl2.sdlttf import *
 from src.config import *
 
 
-class MainMenu(ViewInterface):
+class Settings(ViewInterface):
     def __init__(self):
-        self.name = "mainMenu"
+        self.name = "settings"
         self.buttons = []
         self.title = None
         self.greetings = None
@@ -34,42 +34,21 @@ class MainMenu(ViewInterface):
         color = SDL_Color(0, 0, 0)
 
         button = Button()
-        button.setTexture("Settings", 40, SDL_Color(
+        button.setTexture("Main menu", 40, SDL_Color(
             255, 255, 255), SDL_Color(0, 0, 0))
         button.setPosition(30, SCREEN_HEIGHT - 140)
-        button.onClick(lambda: ViewEngine().changeView("settings"))
+        button.onClick(lambda: ViewEngine().changeView("mainMenu"))
         self.buttons.append(button)
 
         button = Button()
-        button.setTexture("Exit", 40, SDL_Color(
+        button.setTexture("Fullscreen", 40, SDL_Color(
             255, 255, 255), SDL_Color(0, 0, 0))
         button.setPosition(30, SCREEN_HEIGHT - 70)
-        button.onClick(lambda: ViewEngine().exit())
-        self.buttons.append(button)
-
-        button = Button()
-        button.setTexture("Scoreboard", 40, SDL_Color(
-            255, 255, 255), SDL_Color(0, 0, 0))
-        button.setPosition(30, SCREEN_HEIGHT - 210)
-        button.onClick(lambda: ViewEngine().changeView("scoreboard"))
-        self.buttons.append(button)
-
-        button = Button()
-        button.setTexture("New Game", 40, SDL_Color(
-            255, 255, 255), SDL_Color(0, 0, 0))
-        button.setPosition(30, SCREEN_HEIGHT - 350)
-        button.onClick(lambda: ViewEngine().changeView("game"))
-        self.buttons.append(button)
-
-        button = Button()
-        button.setTexture("Set nickname", 40, SDL_Color(
-            255, 255, 255), SDL_Color(0, 0, 0))
-        button.setPosition(30, SCREEN_HEIGHT - 280)
-        button.onClick(lambda: ViewEngine().changeView("nickname"))
+        button.onClick(lambda: ViewEngine().toggleFullscreen())
         self.buttons.append(button)
 
         self.title = Texture(ViewEngine().getRenderer())
-        self.title.loadFromRenderedText("Main Menu", color, gFont)
+        self.title.loadFromRenderedText("Settings", color, gFont)
 
         gFont = TTF_OpenFont(FONT, 40)
         self.greetings = Texture(ViewEngine().getRenderer())

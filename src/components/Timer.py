@@ -37,6 +37,7 @@ class Timer():
                 return self.mPausedTicks
             else:
                 return SDL_GetTicks() - self.mStartTicks
+        return 0
 
     def isStarted(self):
         return self.mStarted
